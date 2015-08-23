@@ -6,32 +6,81 @@
 	<meta name="description" content="Fullstack Foundations First Week Project: Guessing Game HTML/CSS">
 	<!-- Twitter Bootstrap -->
 	<link rel="stylesheet" href="ext_scripts/bootstrap.css">
+
 	<!-- My styles/scripts -->
 	<link rel="stylesheet" href="style.css">
+	
 	<!-- jQuery -->
 	<script src="ext_scripts/jquery.js"></script>
 	<script src="style.js"></script>
+
 </head>
 <body>
-	<div class="container"> 
-		<div class="intro">
-			<h1>I am thinking of a number between 1 and 100. Can you guess what it is?</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-1">
+			<div class="lives_container">
+				<div class="lives2"></div> <!-- How to make the lives abjust to height? -->
+			</div>
 		</div>
+		<div class="col-xs-10">
+			<div class="jumbotron">
+				<h2 class="page-header"> I am thinking of a number between 1 and 100. </h2><p class="leader">Can you guess what it is?</p>
+			</div>
+			<div class="row">
+				<input type="text" class="center-block" />
+				<button class="btn btn-lg center-block">Guess!</button>
+			</div>
+		</div>
+		<div class="col-xs-1">
+			<div class="temp_guage"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="buffer"></div>
+	</div>
+	<input type="text" class="center-block" />
+	<button class="btn btn-lg center-block">Guess!</button>
+	</div>
+	<div class="row">
+		<div class="col-xs-1">
+			<div class="lives2"></div>
+			<p>Something goes here but we're not sure what it is yet</p>
+		</div>
+		<div class="col-xs-1">
+			<p>Something goes here but we're not sure what it is yet</p>
+		</div>
+		<div class="col-xs-4">
+			<p>Something goes here but we're not sure what it is yet</p>
+		</div>
+		<div class="col-xs-4 col-xs-offset-2">
+			<p>Something goes here but we're not sure what it is yet</p>
+		</div>
+	</div>
+	<div class="row">
+		something else here
+	</div>
+</div>
+
+<!--
 		<br />
-		A semicircle with a colour gradient from blue to red, an arrow will point to the response after each guess. Will this work? Have the arrow as an image in a canvas tag and rotating the arrow based on the result? Yes with positioning...
-		or rotate an image using the css-transform and time
+		
 		<br /><br />
+		<div class="main_body">
 		<div class="temp_guage"></div>
 		<div class="arrow_container">
 			<img class="arrow" src="img/arrow-up.svg" alt="arrow">
 		</div>
-		<!-- <div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
- -->
+		<div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+
  		<br />
 		<div class="submission">
-			<input name="guess_enter" type="text" value="enter your guess..."/>
+			<input name="guess_enter" type="text" placeholder\="enter your guess..."/>
 			<input type="submit" name="guess_submit" onclick="guess_func()" value="Guess!">
 		</div>
+		<button class="restart">Restart</button>
+		</div>
+	
 	</div>
 </body>
 </html>

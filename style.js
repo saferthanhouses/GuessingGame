@@ -6,11 +6,7 @@ jQuery.fn.rotate = function(degrees) {
     return $(this);
 };
 
-// $(document).ready(function() {
-// 	setInterval(console.log("GO!"), 1000);
-// });
-
-setInterval(rotate, 1000);
+// setInterval(rotate, 50); // pass rotate the name of the function, not the returned value
 
 function go() {
 	console.log("GO!")
@@ -19,6 +15,9 @@ function go() {
 var rotation=0
 
 function rotate() {
-	rotation+=5
+	rotation+=50
 	$('.arrow').rotate(rotation);
 }
+
+$(document).ready(function(){ rotate() })
+
