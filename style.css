@@ -1,69 +1,77 @@
-body {
-	min-width: 500px;
-	width: auto !important;  /* Firefox will set width as auto */
-   width:1000px;
+/* TODO Why is the window oversized? */
+
+@font-face {
+  font-family: "rustScript";
+  src: url("fonts/introscriptr-h2base.otf") format("truetype");
 }
+
+@font-face {
+  font-family: "rustScripta";
+  src: url("fonts/introheadr-base.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "rustScriptb";
+  src: url("fonts/introrustg-base2line.otf") format("truetype");
+}
+
+h1 { 
+	font-family: "rustScript", sans-serif;
+	font-size: 7em;
+	text-align: center;
+	/*text-decoration: underline;*/
+	border-bottom: solid 1px;
+}
+
+h2 {
+	font-family: "rustScripta", sans-serif;
+}
+
+html, body, .container-fluid {
+    height: 100%;    
+}
+
+.lives_title {
+	font-size: 1em;
+}
+
+.lives2 {
+	margin-top: 10px;
+	background-color: #7130FC;
+	height: 500px; /*make this vary with browser size*/
+	min-height: 100%;
+	width: 100%;
+	border: 1px solid;
+}
+
+.temp_title {
+	font-size: 1em;
+}
+
 .temp_guage {
-/* background gradient */
-margin-top: 20px;
-background: linear-gradient(to right, red, blue);
-background: -webkit-linear-gradient(left, red , blue); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(right, red, blue); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(right, red, blue); /* For Firefox 3.6 to 15 */
+margin-top: 10px;
 
-width: 150px;
-height: 300px;
+background: linear-gradient(#7130FC, #CF0418);
+background: -webkit-linear-gradient(#7130FC ,#CF0418); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, #7130FC, #CF0418); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, #7130FC, #CF0418); /* For Firefox 3.6 to 15 */
 
-/* border-radius*/
-border-radius: 0 0 200px 200px;
--moz-border-radius: 0 0 200px 200px; 
--webkit-border-radius: 0 150px 150px 0;
-
-border: solid 3px;
-
-margin:0px;
+width: 100%;
+height: 500px; /*make this vary with browser size*/
+border: solid 1px;
 
 }
 
-.container {
-	max-width: 500px;
-}
-
-.arrow_container{
-	/*transform: rotate(30deg);*/*/
-	position: fixed;
-	top: 500px;
-}
-
-.arrow {
-	position: absolute; /*what does absolute??*/
-	bottom: 170px;
-	top: 100px;
-	left: 150px;
+input {
+	margin-bottom: 10px;
+	border: 1px solid;
 	width: 100px;
 }
 
-.intro {
-	position: fixed;
-	top: 10%;
-	left: 10%;
-}
-
-.main_body {
-	position: fixed; /*fixed to the browser window - does this take it out of the flow of the dom?*/
-	top: 30%;
-	left: 30%;
-}
-
-.submission {
-	position: absolute;
-	left: 50px;
-}
-
-.restart {
-	position: relative; /* relative to the parent element? */
-	left: 44%;
-	top: 30px;
+.btn {
+	border: 1px solid !important;
+	font-family: "rustScript", sans-serif;
+	font-size: 1.5em;
 }
 
 .jumbotron {
@@ -71,52 +79,41 @@ margin:0px;
 	margin-top: 6%;
 	text-align: center;
 	/*background-color: pink;*/
+	border: 3px solid;
+	/*background-color: #7130FC;*/
+	padding: 20px;
 }
 
-/*.lives {
-	float: left;
+.leader {
+	/*background-color: #7130FC;*/
+	font-family: "rustScripta", sans-serif;
+}
+
+.page-header {
+	border-bottom: solid 2px grey;
+}
+
+.arrow_container{
+	transform: rotate(39deg); */
+}
+
+.arrow {
+	position: absolute; 
+	top: 100px;
+	left: 57px;
+	width: 70%;
+}
+/* TODO Get the arrow to be positioned correctly all the time*/
+
+.restart {
 	position: fixed;
-	top: 15%;
-	left: 15%;
-	height: 80%;
-	width: 5%;
-	background-color: #6699FF; /*sea-blue
-	border-radius: 2em 2em 2em 2em;
-	margin-bottom: 10px;
-}*/
-
-.lives {
-
-	position: absolute;
-	top: 10%;
-	left: 10%;
-	height: 00px;
-	width: 20px;
-	background-color: #6699FF;
+	bottom: 30px;
+	left: 47%;
+	text-align: center;
+	font-family: "rustScript", sans-serif;
+	font-size: 1.3em;
+	color: #CF0418;
+	text-decoration: underline;
+	cursor: pointer;
 }
-
-.lives2 {
-	/*padding-right:0px;*/
-	/*margin: 20px;*/
-	padding-left:10px;
-	background-color: blue;
-	height: 200px;
-	width: 110%;
-}
-
-.buffer {
-	height: 300px;
-}
-
-.alt_lives {
-	height: 20px;
-	width: 0%; /*change with the score*/
-	background-color: #6699FF; /*sea-blue*/
-	border-radius: 2em 2em 2em 2em;	
-	margin-bottom: 10px;
-}
-
-input {
-	margin-bottom: 10px;
-}
-
+/*TODO Get the restart to be responsive to the browser size */

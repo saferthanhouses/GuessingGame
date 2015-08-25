@@ -1,24 +1,11 @@
-Drawing a Semicircle in CSS with a colour gradient
-
-border-radius: (length) top-left top-right bottom-left bottom-right
 
 TODO:
 
 - Get an appropriate arrow svg. 
 - from the rotation it looks like the arrow is rotating around the central point of its height and width. Is there some way to change this so it rotates around the center of it's base?
-- and then position the arrow over the semicircle so that it can rotate appropriately
 
 To Research / Note
 - Javascript setInterval() method (pass it the function name, not the returned value etc.) and other JS timing methods
 - CSS animations
 
-- How to get everything centered in the browser window?
-- How to overlay elements to create a whole item ( the temperature dial? )
-- Background design?
 - More css positioning research
-
-- get everything in the main page container to center in the browser
-
-- curved gradient css? Nope - Maybe use img depending on time
-
-- something like this? http://justgage.com/
