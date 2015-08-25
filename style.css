@@ -66,6 +66,7 @@ input {
 	margin-bottom: 10px;
 	border: 1px solid;
 	width: 100px;
+	font-family: "rustScriptb", sans-serif;
 }
 
 .btn {
