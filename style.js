@@ -20,21 +20,30 @@ function rotate() {
 	rotation+=50;
 	$('.arrow').rotate(rotation);
 }
+
+// #################### Game Code #################
+
 	
 // create random number between 1-100
 var target_no = Math.floor(Math.random() * 100);
 
+var guesses = [];
 
-//TODO:
+// main script
 $(document).ready(function() {
 	
 	// get the initial height of the arrow in pixels
-	var arrow_height_pixels = parseInt($(".arrow").css("left"));
-	console.log(arrow_height_pixels);
+	var initial_arrow_height = parseInt($(".arrow").css("left"));
 
+	//console.log(arrow_height_pixels);
+
+	// get the height of the temperature bar
 	console.log(getTempHeight());
 
-
+	// ############# Restart Button ##################
+	$("a").on('click', function() { 
+		location.reload();
+	});
 
 	// ###### set default input & clear on focus ######
 	$("input:text.guess_value").val("Enter 1-100");
@@ -44,27 +53,30 @@ $(document).ready(function() {
 	// ################################################
 
 
-	// on click or enter (bottom of page) #############
+	// ##### on click or enter (bottom of page) #######
 	$("button").click(function(){
-		var guess = $("input").val(); // why does this not work with other selectors?
+
+		var guess = $("input").val(); 
+		// why does this not work with other selectors?
+		
 		// reset the input
-		$("input").val("")
+		$("input").val("");
+		
 		// validate guess
 		if (validate(guess)) {
-			// get the height of the temp_guage
-			// move the arrow based on the height of the temp guage
+			
 			// guess -> hot_or_not_function(guess) -> call move_arrow
 			//									   -> get hot or not words  ???
-			arrow_height_pixels = move_arrow_vert(arrow_height_pixels, 100);
-			console.log(arrow_height_pixels);
+			// arrow_height_pixels = move_arrow_vert(arrow_height_pixels, 100);
+			// console.log(arrow_height_pixels);
 			console.log("Target: " + target_no);
-			hotOrNot(guess);
+			hotOrNot(guess, initial_arrow_height);
 			// alert("valid");
 
 			// Process stuff
 		}
 		else {
-			alert("Enter a number between 1 & 100!")
+			flash("Enter a number between 1 & 100!", "red");
 			// TODO:
 			//$("button").after("Between 1 & 100");  
 			// would be cool to show this on the page under the button
@@ -81,10 +93,10 @@ $(document).ready(function() {
 			$("button").click();
 		};
 	});
-
-
-
 });
+
+
+// ################## Other functions ##############
 
 function validate(input) {
 	var entered = parseInt(input);
@@ -102,59 +114,80 @@ function getTempHeight() {
 	return $(".temp_guage").height();
 }
 
-function hotOrNot(guess) {
+function hotOrNot(guess, arrow_height) {
 	// how to evaluate how far from the total number the guess is?
-	var difference = guess > target_no ? guess - target_no : target_no - guess;
-	if (difference===0) { return win() }
+
 	var message = "";
+	var color = "";
+	var arrow_height;
+
+	var difference = guess > target_no ? guess - target_no : target_no - guess;
+	
+	if (difference===0) { return win() }
+
 	switch (true) {
 		case (difference<=5): 
 			message+="Burning Hot!";
+			color = "#CF0418";
+			arrow_height = 1;
 			break;
 		case (difference<=15): 
 			message+="You're Hot!";
+			color = "#E81919";
+			arrow_height = 0.8;
 			break;
 		case (difference<=25): 
 			message+="You're warm.";
+			color = "#FF8080";
+			arrow_height = 0.6;
 			break;
 		case (difference<=35): 
 			message+="Pretty cool...";
+			color = "#9966FF";
+			arrow_height = 0.4;
 			break;
 		case (difference>35 && difference < 50): 
 			message+="Too cool man!";
+			color = "#AD85FF";
+			arrow_height = 0.2;
 			break;
 		case (difference>50): 
 			message+="Ice Cold!";
+			color = "#C2A3FF";
+			arrow_height = 0;
 			break;
 	}
+
 	if (guess > target_no) { 
-		message+=" Try lower.";
+		message+=" Try lower...";
 	}
 	else {
-		message+=" Go higher.";
-	}
-	flash(message);
+		message+=" Go higher...";
+	};
+
+	// flash the message up.
+	// How can we add a css selector 
+	flash(message, color);
+
+	// move arrow to position
+	move_arrow_vert(arrow_height, arrow_height);
 
 	return difference;
 
 }
 
-function move_arrow_vert(prev, number) {
-	// need to set the zero value in pixels depending on the size of the browser
-	// function to move the arrow to a height on the temp_guage
-	// from 1-100
-	// need to change this !!!! NEED THIS TO BE ABSOLUTE.
-	// e.g. setArrowHeight(value)
-	// this value comes out of a hot or not function.
-	// make it a proportion of the height of the temp_guage.
-	// how accurate do we want this to be?
-	var next_height_px = number + prev;
-	// how to: 
-	// move with jquery?
+function move_arrow_vert(arrow_h, init_height) {
+	// given that the arrow always start in the right spot.
+	// what displacement do we have to give it?
+
+	var position = getTempHeight();
+	// left =
+	var height = position * arrow_h;
+
 	$(".arrow").css(
-		{"left": next_height_px + "px"}
+		{"left": height + init_height + "px"}
 	);
-	return next_height_px;
+
 };
 
 function win() {
@@ -166,13 +199,27 @@ function win() {
 	});
 }
 
-function flash(message){
+function flash(message, color){
 	// flashes the message in the area below the Guess Button
 	// used for the hotOrNot messages and the invalid messages
 	// not used for win
-	var input = "<p class='flash'>" + message + ",</p>"
+	var input = "<p class='flash'>" + message + ",</p>";
+	color = color ? color : "black"; 
 	$("button").after(input);
-	window.setTimeout(function(){ $(".flash").remove()}, 2000);
+	$(".flash").css("color", color );
+	$(".flash").hide().fadeIn();
+
+	// if we hear a keypress or mouse click, disappear message
+	// $(document).on('click', function() {
+	// 	$(".flash").remove();
+	// });
+
+	// let's get this to fade in and out.
+	window.setTimeout(function(){
+		$(".flash").fadeOut(400, function() { 
+			$( this ).remove();
+		});
+	}, 400);
 
 }
 

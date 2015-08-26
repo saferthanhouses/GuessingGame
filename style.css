@@ -29,7 +29,7 @@ h2 {
 
 html, body, .container-fluid {
     height: 100%;    
-    min-width: 500px;
+    min-width: 728px;
 }
 
 .lives_title {
@@ -106,15 +106,16 @@ input {
 .arrow {
 	position: absolute; 
 	top: 30px;
-	left: 90px;
+	left: 70px;
 	width: 70%;
 }
 /* TODO Get the arrow to be positioned correctly all the time*/
 
 .restart {
-	position: fixed;
-	bottom: 30px;
+	position: absolute;
+	/*bottom: 30px;*/
 	left: 47%;
+	bottom: -60px;
 	text-align: center;
 	font-family: "rustScript", sans-serif;
 	font-size: 1.3em;
@@ -123,3 +124,10 @@ input {
 	cursor: pointer;
 }
 /*TODO Get the restart to be responsive to the browser size */
+
+.flash {
+	font-family: "rustScriptb", sans-serif;
+	font-size: 3em;
+	text-align: center;
+	color: black;
+}
