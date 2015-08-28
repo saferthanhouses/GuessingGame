@@ -1,3 +1,7 @@
+
+// Currently -- change to a more obj-oriented method
+//			  - wrap globals in a function?
+
 // TODO: Fix the restart
 // TODO: Make the lives go down
 // TODO: Fix temp arrow better
@@ -15,7 +19,7 @@
 // 	this.initial_arrow_height 
 // }
 
-()()
+
 
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
