@@ -4,6 +4,19 @@
 // Animate moving temp arrow
 // Win Animation
 
+// function Game(){
+// 	this.guess = [];
+// 	this.initial_arrow_height = function() {
+
+// 	} 
+// }
+
+// Game.prototype.hotOrNot(){
+// 	this.initial_arrow_height 
+// }
+
+()()
+
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
                  '-moz-transform' : 'rotate('+ degrees +'deg)',
@@ -36,6 +49,7 @@ var guesses = [];
 
 // main script
 $(document).ready(function() {
+	var currentGame = new Game();
 	
 	// get the initial height of the arrow in pixels
 	var initial_arrow_height = parseInt($(".arrow").css("left"));
