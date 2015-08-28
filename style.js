@@ -1,5 +1,18 @@
 // TODO: Move the restart when small
 
+// function Game(){
+// 	this.guess = [];
+// 	this.initial_arrow_height = function() {
+
+// 	} 
+// }
+
+// Game.prototype.hotOrNot(){
+// 	this.initial_arrow_height 
+// }
+
+()()
+
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
                  '-moz-transform' : 'rotate('+ degrees +'deg)',
@@ -31,6 +44,7 @@ var guesses = [];
 
 // main script
 $(document).ready(function() {
+	var currentGame = new Game();
 	
 	// get the initial height of the arrow in pixels
 	var initial_arrow_height = parseInt($(".arrow").css("left"));
@@ -69,18 +83,13 @@ $(document).ready(function() {
 			//									   -> get hot or not words  ???
 			// arrow_height_pixels = move_arrow_vert(arrow_height_pixels, 100);
 			// console.log(arrow_height_pixels);
+			
 			console.log("Target: " + target_no);
 			hotOrNot(guess, initial_arrow_height);
-			// alert("valid");
-
-			// Process stuff
+			// how to not pass the initial arrow height down through the functions?
 		}
 		else {
 			flash("Enter a number between 1 & 100!", "red");
-			// TODO:
-			//$("button").after("Between 1 & 100");  
-			// would be cool to show this on the page under the button
-			// then remove on next focus / click
 		}
 	});
 	// #################################################
