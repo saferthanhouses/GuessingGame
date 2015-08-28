@@ -1,4 +1,8 @@
-// TODO: Move the restart when small
+// TODO: Fix the restart
+// TODO: Make the lives go down
+// TODO: Fix temp arrow better
+// Animate moving temp arrow
+// Win Animation
 
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
@@ -23,9 +27,10 @@ function rotate() {
 
 // #################### Game Code #################
 
-	
+var start_lives = 5;
+
 // create random number between 1-100
-var target_no = Math.floor(Math.random() * 100);
+var target_no = Math.round(Math.random() * 100);
 
 var guesses = [];
 
@@ -35,10 +40,16 @@ $(document).ready(function() {
 	// get the initial height of the arrow in pixels
 	var initial_arrow_height = parseInt($(".arrow").css("left"));
 
+	// how to get the inital height of the lives bar?
+	var initial_lives_height = parseInt($(".lives2").css("height"));
+
 	//console.log(arrow_height_pixels);
 
 	// get the height of the temperature bar
 	console.log(getTempHeight());
+
+	// get the height of the lives bar
+	console.log(getLivesHeight());
 
 	// ############# Restart Button ##################
 	$("a").on('click', function() { 
@@ -65,27 +76,24 @@ $(document).ready(function() {
 		// validate guess
 		if (validate(guess)) {
 			
-			// guess -> hot_or_not_function(guess) -> call move_arrow
-			//									   -> get hot or not words  ???
-			// arrow_height_pixels = move_arrow_vert(arrow_height_pixels, 100);
-			// console.log(arrow_height_pixels);
 			console.log("Target: " + target_no);
-			hotOrNot(guess, initial_arrow_height);
-			// alert("valid");
 
-			// Process stuff
+			if (guesses.lastIndexOf(guess)==0) {
+				flash("Number Guessed Already", "yellow");
+			}
+			else 
+			{
+				guesses.push(guess);
+				hotOrNot(guess, initial_arrow_height);
+				take_lives(initial_lives_height);;
+			}
 		}
-		else {
-			flash("Enter a number between 1 & 100!", "red");
-			// TODO:
-			//$("button").after("Between 1 & 100");  
-			// would be cool to show this on the page under the button
-			// then remove on next focus / click
+		else 
+		{
+			flash("	Enter a number between 1 & 100!", "red");
 		}
 	});
 	// #################################################
-
-
 
 	// trigger click event on guess input Enter
 	$("input:text.guess_value").keypress(function(e) {
@@ -93,6 +101,7 @@ $(document).ready(function() {
 			$("button").click();
 		};
 	});
+
 });
 
 
@@ -123,7 +132,7 @@ function hotOrNot(guess, arrow_height) {
 
 	var difference = guess > target_no ? guess - target_no : target_no - guess;
 	
-	if (difference===0) { return win() }
+	if (difference===0) { return win(arrow_height) }
 
 	switch (true) {
 		case (difference<=5): 
@@ -151,7 +160,7 @@ function hotOrNot(guess, arrow_height) {
 			color = "#AD85FF";
 			arrow_height = 0.2;
 			break;
-		case (difference>50): 
+		case (difference>=50): 
 			message+="Ice Cold!";
 			color = "#C2A3FF";
 			arrow_height = 0;
@@ -190,29 +199,27 @@ function move_arrow_vert(arrow_h, init_height) {
 
 };
 
-function win() {
+function win(init_height) {
+	//TODO: Why is this lower than the other '1's	
+	move_arrow_vert(1, init_height);
+
 	// the win animation will take a callback that will 
 	// effectively reset the page after the animation has 
 	// completed
 	winAnimation(function() {
 		location.reload();
 	});
-}
+};
 
 function flash(message, color){
 	// flashes the message in the area below the Guess Button
 	// used for the hotOrNot messages and the invalid messages
 	// not used for win
-	var input = "<p class='flash'>" + message + ",</p>";
+	var input = "<p class='flash'>" + message + "</p>";
 	color = color ? color : "black"; 
 	$("button").after(input);
 	$(".flash").css("color", color );
 	$(".flash").hide().fadeIn();
-
-	// if we hear a keypress or mouse click, disappear message
-	// $(document).on('click', function() {
-	// 	$(".flash").remove();
-	// });
 
 	// let's get this to fade in and out.
 	window.setTimeout(function(){
@@ -221,7 +228,7 @@ function flash(message, color){
 		});
 	}, 400);
 
-}
+};
 
 function winAnimation(callback){
 	// TODO: fancy animation for Win
@@ -229,24 +236,18 @@ function winAnimation(callback){
 	// assume the animation takes 2 seconds,
 	// after two second reload the page
 	window.setTimeout(callback, 2000);
-}
-	
-	// validate guess
-	// if guess is good,
-			// check if it's the target -> if so, run the congratulations function.
-		// work out it's proximity to the target
-			// update the position of the arrow
-			// remove a life from the lives bar
-			//  
-// after a guess, indicate whether it's hot or cold
+};
 
-// validate guesses that are real numbers between 1-100
+function take_lives(lives_height) {
+	// changes the height of the lives bar depending on
+	// how many lives are remaining.
+	var each_life_height = lives_height/start_lives;
+	var new_height = each_life_height * (start_lives - guesses.length) + "px";
+	console.log("lives height:" + new_height);
+	// why is the css assignment not working?
+	$("lives2").css("height", new_height);
+};
 
-// reset the game with the button
-
-// store all of the guesses and check if any are a repeat
-	// (fade in message text)
-
-// button that provides the answer (after the first guess)
-
-// do something creative when the user guesses the correct answer.
+function getLivesHeight() {
+	return $(".lives2").height();	
+};

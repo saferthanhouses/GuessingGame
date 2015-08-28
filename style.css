@@ -40,7 +40,7 @@ html, body, .container-fluid {
 	margin-top: 10px;
 	background-color: #7130FC;
 	height: 500px; /*make this vary with browser size*/
-	min-height: 100%;
+	/*min-height: 100%;*/
 	width: 100%;
 	border: 1px solid;
 	border-radius: 4px;
@@ -109,13 +109,13 @@ input {
 	left: 70px;
 	width: 70%;
 }
-/* TODO Get the arrow to be positioned correctly all the time*/
 
+/* TODO: Get restart to behave*/
 .restart {
-	position: absolute;
+	position: fixed;
 	/*bottom: 30px;*/
-	left: 47%;
-	bottom: -60px;
+	left: 48%;
+	bottom: 0px;
 	text-align: center;
 	font-family: "rustScript", sans-serif;
 	font-size: 1.3em;
