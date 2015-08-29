@@ -39,13 +39,14 @@ body {
 .lives_title {
 	font-size: 1em;
 	/*margin-bottom: 20px;*/
+	text-align: center;
 }
 
 .lives2 {
 	position: absolute;
 	margin-top: 10px;
 	background-color: #7130FC;
-	height: 500px; /*make this vary with browser size*/
+	height: 100%;
 	/*min-height: 100%;*/
 	width: 100%;
 	border: 1px solid;
@@ -59,11 +60,14 @@ body {
 }
 
 .temp_title {
+	text-align: right;
 	font-size: 1em;
+	padding-right: 20%;
 }
 
 .temp_guage {
-margin-top: 10px;
+/*margin-top: 10px;*/
+padding: 0px;
 
 background: linear-gradient(#7130FC, #CF0418);
 background: -webkit-linear-gradient(#7130FC ,#CF0418); /* For Safari 5.1 to 6.0 */
@@ -112,17 +116,20 @@ input {
 }
 
 .arrow_container{
-	position:relative;
-	transform: rotate(90deg); */
+	padding: 0px;
+	width: 30px	;*/
+	/*position:relative;*/
+	/*transform: rotate(90deg); */
 }
 
 .arrow {
+	transform: rotate(90deg);
 	/*margin-left: -10px;*/
 	/*margin-right: -10px;*/
-	position: absolute; 
-	top: 30px;
-	left: 70px;
-	width: 70%;
+	position: relative; 
+	top: 0px;
+	/*left: 70px;*/
+	width: 100%;
 }
 
 /* TODO: Get restart to behave*/
@@ -145,4 +152,8 @@ input {
 	font-size: 3em;
 	text-align: center;
 	color: black;
+}
+
+.jumanji {
+	padding: 0px;
 }

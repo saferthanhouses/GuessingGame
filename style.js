@@ -1,4 +1,5 @@
-// TODO: Fix Losing ...  
+// TODO: Get the win sequence to not remove a life.
+// more colours etc on page  
 
 function Game(start_lives) {
 	// game
@@ -7,10 +8,11 @@ function Game(start_lives) {
 	this.start_lives = start_lives;
 
 	// graphics
-	this.initial_arrow_height = parseInt( $(".arrow").css("left") );
+	this.initial_arrow_height = parseInt( $(".arrow").css("top") );
 	this.lives_height = parseInt( $(".lives2").css("height") );
 	this.temperature_height = parseInt( $(".temp_guage").css("height") );
 	this.lives_increment = this.lives_height / this.start_lives;
+	this.arrow_container_height = parseInt( $(".arrow_container").height());
 }
 
 // validate the guess 
@@ -27,7 +29,7 @@ Game.prototype.validate = function(input) {
 // hot or not does what:
 Game.prototype.hotOrNot = function(guess) {
 
-	// initialize function variables
+	// nitialize function variables
 	var message = "";
 	var color = "";
 	var arrow_height;
@@ -115,11 +117,13 @@ Game.prototype.flash = function(message, color) {
 // move the arrow to the arrow_height proportion of the height of the bar
 Game.prototype.move_arrow = function(arrow_height) {
 	// new height of the arrow (proportion of bar) * 
-	var new_height = arrow_height * this.temperature_height;
+	console.log("move_arrow");
+
+	var new_height = arrow_height * this.arrow_container_height;
 
 	// move the arrow to that height by adding the pixels to the arrow's original position
 	$(".arrow").animate(
-		{"left": new_height + this.initial_arrow_height + "px"}
+		{"top": new_height + this.initial_arrow_height + "px"}
 	);
 	// hmmmm. should be able to fix this positioning issue
 	// at it's source...
@@ -169,6 +173,22 @@ Game.prototype.loseAnimation = function(callback) {
 // main script
 $(document).ready(function() {
 
+
+	// Graphics: adjust the height of things
+	$(".lives_container").height( 
+		( (parseInt($( window ).height()) - parseInt($(".lives_title").height()) )
+		* 0.8) + "px" );
+	$(".temp_guage").height( 
+		( (parseInt($( window ).height()) - parseInt($(".temp_title").height()) )
+		* 0.8) + "px" );
+	// $(".arrow_container").height( $(".temp_guage").height() + "px");
+	$(".lives_title").height( $(".temp_title").height() + "px");
+	$(".arrow_container").width( $(".jumanji").width() + "px" );
+	$(".arrow_container").height(
+		(parseInt($(".temp_guage").height())) - (parseInt($(".arrow").width())/2)
+		 + "px");
+	console.log("arrow_container height: " + $(".arrow_container").height());
+	console.log("temp_guage height: " + $(".temp_guage").height());
 	// initalize instance of current game
 	var currentGame = new Game(5);
 
@@ -181,13 +201,13 @@ $(document).ready(function() {
 	});
 
 	// Defaut input text and clear on focus
-	$("input:text.guess_value").val("Enter 1-100"); 
-	$("input:text.guess_value").on("focus", function() {
+	$("input").val("Enter 1-100");  // :text.guess_value
+	$("input").on("focus", function() {
 		$( this ).val("");
 	});
 
 	// trigger click event on 'Enter' to input guess
-	$("input:text.guess_value").keypress(function(e) {
+	$("input").keypress(function(e) {
 		if (e.which==13) {
 			$("button").click();
 		};
