@@ -32,11 +32,17 @@ html, body, .container-fluid {
     min-width: 728px;
 }
 
+body {
+	background-color: ;
+}
+
 .lives_title {
 	font-size: 1em;
+	/*margin-bottom: 20px;*/
 }
 
 .lives2 {
+	position: absolute;
 	margin-top: 10px;
 	background-color: #7130FC;
 	height: 500px; /*make this vary with browser size*/
@@ -44,6 +50,12 @@ html, body, .container-fluid {
 	width: 100%;
 	border: 1px solid;
 	border-radius: 4px;
+	bottom: 0px;
+}
+
+.lives_container {
+	height: 500px;
+	position: relative;
 }
 
 .temp_title {
@@ -71,6 +83,7 @@ input {
 	border: 1px solid;
 	width: 100px;
 	font-family: "rustScriptb", sans-serif;
+	text-align: center;
 }
 
 .btn {
@@ -104,6 +117,8 @@ input {
 }
 
 .arrow {
+	/*margin-left: -10px;*/
+	/*margin-right: -10px;*/
 	position: absolute; 
 	top: 30px;
 	left: 70px;
