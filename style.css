@@ -169,3 +169,17 @@ input {
 .jumanji {
 	padding: 0px;
 }
+
+svg circle {
+	fill: #D0002A;
+}
+
+svg {
+	padding-left: 20px;
+}
+
+svg {
+	height: 20%;
+	width: 100%;
+}
+

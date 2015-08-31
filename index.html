@@ -9,6 +9,7 @@
 	<script src="ext_scripts/jquery.js"></script>
 	<script src="ext_scripts/bootstrap.js"></script>
 	<script src="style.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script> 
 	<!-- CSS -->
 	<link rel="stylesheet" href="ext_scripts/bootstrap.css">
 	<link rel="stylesheet" href="style.css">	
@@ -55,30 +56,36 @@
 		</div>
 	</div>
 
-
-<!-- // this interferes with my selectors... -->
-	<!-- Modal -->
+<!-- Modal -->
 <div id="myModal" class="modal fade  container-fluid" role="dialog">
   <div class="modal-dialog">
 
   <!-- Modal content-->
     <div class="modal-content">
-      <!-- <div class="modal-header"> -->
-      <!--   <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-        <!-- <h4 class="modal-title">Modal Header</h4> -->
-      <!-- </div> -->
       <div class="modal-body">
         <h2>You Win!</h2>
         <a href="http://thecatapi.com"><img class="img-responsive center-block" src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>
-        <!-- load a poem from somewhere? -->
-        <!-- use d3 to plot the points on -->
       </div>
-      <!-- <div class="modal-footer"> -->
-<!--         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
- -->      </div>
+     <!-- </div> -->
     </div> 
-
-  </div> 
+ </div> 
 </div>
+<!-- Lose Modal -->
+<div id="loseModal" class="modal fade container-fluid">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<h2>You Lose! Sorry :(</h2>
+				<svg></svg>
+			</div>
+			<div class="modal-footer">
+				<a id="reset" type="button" class="btn btn-default center-block" data-dismiss="modal">Try Again</a>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
 </body>
 </html>

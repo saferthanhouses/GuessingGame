@@ -164,7 +164,6 @@ Game.prototype.winAnimation = function(callback){
 
 // lose animation handler
 Game.prototype.lose = function() {
-
 	this.loseAnimation(function() {
 		location.reload();
 	});
@@ -172,9 +171,32 @@ Game.prototype.lose = function() {
 
 // TODO: crazy animation goes here :)
 Game.prototype.loseAnimation = function(callback) {
-	alert("you lose sucker!")
-	window.setTimeout(callback, 2000);
+	// alert("you lose sucker!")/
+	$('input').prop('disabled', true);
+	this.maked3();
+	$("#loseModal").modal('show');
+	// window.setTimeout(callback, 2500);
 };
+
+Game.prototype.maked3 = function() {
+	var data = [];
+	var svg = d3.select('svg')
+	// setInterval(addCircle, 500)
+
+	for (var i=0; i<this.guesses.length; i++){
+		data.push({x: (i+1) * parseInt($('svg').width()), y: parseInt(this.guesses[i])})
+	}
+	data.push({ x: parseInt($('svg').width()), y: this.target_no });
+	console.log(data);
+	var circles = svg.selectAll('circle').data(data)
+
+	circles.enter().append('circle')
+		.attr('cx', function(d) { return d.x })
+		.attr('cy', function(d) { return d.y })
+		.attr('r', 0)
+		// .transition().duration(500)
+		.attr('r', 3)
+}
 // ##############################################
 
 
@@ -253,5 +275,12 @@ $(document).ready(function() {
 			currentGame.flash("	Enter a number between 1 & 100!", "red");
 		}
 	});
+
+	$('#reset').click(function() {
+		location.reload();
+	})
  });
 
+// D3 for Losing modal
+
+ 
