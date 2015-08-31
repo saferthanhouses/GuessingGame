@@ -138,19 +138,28 @@ Game.prototype.take_lives = function() {
 	}
 };
 
+// yolo!
+function getData(callback) {
+	$.getJSON('http://localhost:8000/api/parsetime', function(data){
+		console.log(data)
+	})
+}
 
 // win animation handler
 Game.prototype.win = function() {
-	this.winAnimation(function() {
-		location.reload();
-	});
+	this.winAnimation(
+		function() { location.reload() }
+	);
 };
 
 // TODO: crazy animation goes here :)
 Game.prototype.winAnimation = function(callback){
-	alert("You Win!")
+	// on win open a modal that contains something fun that changes.
 	this.move_arrow(1);
-	window.setTimeout(callback, 2000);
+	$("input").prop('disabled', true);
+	$('#myModal').modal('show');
+	window.setTimeout(callback, 2500);
+	
 };
 
 // lose animation handler
@@ -177,10 +186,10 @@ $(document).ready(function() {
 	// Graphics: adjust the height of things
 	$(".lives_container").height( 
 		( (parseInt($( window ).height()) - parseInt($(".lives_title").height()) )
-		* 0.8) + "px" );
+		* 0.9) + "px" );
 	$(".temp_guage").height( 
 		( (parseInt($( window ).height()) - parseInt($(".temp_title").height()) )
-		* 0.8) + "px" );
+		* 0.9) + "px" );
 	// $(".arrow_container").height( $(".temp_guage").height() + "px");
 	$(".lives_title").height( $(".temp_title").height() + "px");
 	$(".arrow_container").width( $(".jumanji").width() + "px" );

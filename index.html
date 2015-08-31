@@ -4,16 +4,14 @@
 	<title>Foundations Week 1: Guessing Game</title>
 	<meta charset="utf-8">
 	<meta name="description" content="Fullstack Foundations First Week Project: Guessing Game HTML/CSS">
-	<!-- Twitter Bootstrap -->
-	<link rel="stylesheet" href="ext_scripts/bootstrap.css">
 
-	<!-- My styles/scripts -->
-	<link rel="stylesheet" href="style.css">
-	
-	<!-- jQuery -->
+	<!-- Javascript -->
 	<script src="ext_scripts/jquery.js"></script>
+	<script src="ext_scripts/bootstrap.js"></script>
 	<script src="style.js"></script>
-
+	<!-- CSS -->
+	<link rel="stylesheet" href="ext_scripts/bootstrap.css">
+	<link rel="stylesheet" href="style.css">	
 </head>
 <body>
 <div class="container-fluid">
@@ -25,17 +23,19 @@
 			</div>
 		</div>
 		<div class="col-xs-8">
-			<div class="title">
-				<h1>Guessing Game</h1>
-			</div>
 			<div class="jumbotron">
-				<!-- <h1>Guessing Game</h1> --> <!-- funky font here -->
+			<div class="title"  id="main_title">
+
+				<h1>The Wrong Wall Guessing Game</h1>
+			</div>
+			<!-- <div class="jumbotron"> -->
+			 	<!-- <h1>Guessing Game</h1> --> <!-- funky font here -->
 				<h2 class="page-header"> I am thinking of a number between 1 and 100. </h2><p class="leader">Can you guess what it is?</p>
 			</div>
 			<div class="row">
-				<input type="text" class="center-block guess_value" id="guess_value" />
+				<input type="text" class="center-block guess_value" id="guess_value"/>
 				<button class="btn btn-lg center-block">Guess!</button>
-				<a class="restart center-block">Restart</a>
+				<a class="restart center-block hidden-sm hidden-xs">Restart</a>
 			</div>
 		</div>
 		<div class="col-xs-2">
@@ -54,5 +54,31 @@
 			</div>
 		</div>
 	</div>
+
+
+<!-- // this interferes with my selectors... -->
+	<!-- Modal -->
+<div id="myModal" class="modal fade  container-fluid" role="dialog">
+  <div class="modal-dialog">
+
+  <!-- Modal content-->
+    <div class="modal-content">
+      <!-- <div class="modal-header"> -->
+      <!--   <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <!-- <h4 class="modal-title">Modal Header</h4> -->
+      <!-- </div> -->
+      <div class="modal-body">
+        <h2>You Win!</h2>
+        <a href="http://thecatapi.com"><img class="img-responsive center-block" src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>
+        <!-- load a poem from somewhere? -->
+        <!-- use d3 to plot the points on -->
+      </div>
+      <!-- <div class="modal-footer"> -->
+<!--         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ -->      </div>
+    </div> 
+
+  </div> 
+</div>
 </body>
 </html>

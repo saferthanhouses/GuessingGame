@@ -20,32 +20,42 @@ h1 {
 	font-size: 7em;
 	text-align: center;
 	/*text-decoration: underline;*/
-	border-bottom: solid 1px;
+}
+
+#main_title {
+	max-height: 20%;
 }
 
 h2 {
+	text-align: center;
 	font-family: "rustScripta", sans-serif;
 }
 
 html, body, .container-fluid {
     height: 100%;    
     min-width: 728px;
+    max-height: 100%;
 }
 
 body {
-	background-color: ;
+	background: url("img/brick-wall.png"), #339966;
 }
 
+img {
+	margin-bottom: 10%;
+}
 .lives_title {
-	font-size: 1em;
+	font-size: 1.0em;
+	font-family: "rustScriptb", sans-serif;
 	/*margin-bottom: 20px;*/
+	font-weight: 1.0;
 	text-align: center;
 }
 
 .lives2 {
 	position: absolute;
 	margin-top: 10px;
-	background-color: #7130FC;
+	background: url("img/asfalt-light.png"), #002EB8;
 	height: 100%;
 	/*min-height: 100%;*/
 	width: 100%;
@@ -60,8 +70,9 @@ body {
 }
 
 .temp_title {
+	font-size: 1.0em;
+	font-family: "rustScriptb", sans-serif;
 	text-align: right;
-	font-size: 1em;
 	padding-right: 20%;
 }
 
@@ -69,10 +80,10 @@ body {
 /*margin-top: 10px;*/
 padding: 0px;
 
-background: linear-gradient(#7130FC, #CF0418);
-background: -webkit-linear-gradient(#7130FC ,#CF0418); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(right, #7130FC, #CF0418); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(right, #7130FC, #CF0418); /* For Firefox 3.6 to 15 */
+background: url("img/asfalt-light.png"), linear-gradient(#7130FC, #CF0418);
+background: url("img/asfalt-light.png"), -webkit-linear-gradient(#7130FC ,#CF0418); /* For Safari 5.1 to 6.0 */
+background: url("img/asfalt-light.png"), -o-linear-gradient(right, #7130FC, #CF0418); /* For Opera 11.1 to 12.0 */
+background: url("img/asfalt-light.png"), -moz-linear-gradient(right, #7130FC, #CF0418); /* For Firefox 3.6 to 15 */
 
 width: 100%;
 height: 500px; /*make this vary with browser size*/
@@ -87,20 +98,21 @@ input {
 	border: 1px solid;
 	width: 100px;
 	font-family: "rustScriptb", sans-serif;
-	text-align: center;
+
 }
 
 .btn {
 	border: 1px solid !important;
 	font-family: "rustScript", sans-serif;
 	font-size: 1.5em;
+	background-image: url("img/asfalt-dark.png");
 }
 
 .jumbotron {
 	margin-left: 10px;
 	margin-top: 6%;
 	text-align: center;
-	/*background-color: pink;*/
+	background-image: url("img/asfalt-dark.png");
 	border: 3px solid;
 	/*background-color: #7130FC;*/
 	padding: 20px;
@@ -115,7 +127,7 @@ input {
 	border-bottom: solid 1px gray;
 }
 
-.arrow_container{
+{
 	padding: 0px;
 	width: 30px	;*/
 	/*position:relative;*/
