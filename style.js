@@ -179,14 +179,17 @@ Game.prototype.loseAnimation = function(callback) {
 };
 
 Game.prototype.maked3 = function() {
+	
 	var data = [];
-	var svg = d3.select('svg')
+	var svg = d3.select('svg');
 	// setInterval(addCircle, 500)
-
+	console.log("svg width: " + $("svg").width());
+	var interval = parseInt($('svg').width()) / (this.guesses.length+3);
+	console.log("interval: " + interval)
 	for (var i=0; i<this.guesses.length; i++){
-		data.push({x: (i+1) * parseInt($('svg').width()), y: parseInt(this.guesses[i])})
+		data.push({x: (i+1) * interval, y: parseInt(this.guesses[i])})
 	}
-	data.push({ x: parseInt($('svg').width()), y: this.target_no });
+	data.push({ x: interval*(this.guesses.length+2), y: this.target_no });
 	console.log(data);
 	var circles = svg.selectAll('circle').data(data)
 

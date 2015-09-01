@@ -9,7 +9,7 @@
 	<script src="ext_scripts/jquery.js"></script>
 	<script src="ext_scripts/bootstrap.js"></script>
 	<script src="style.js"></script>
-	<script src="http://d3js.org/d3.v3.min.js"></script> 
+	<script src="ext_scripts/d3.js"></script> 
 	<!-- CSS -->
 	<link rel="stylesheet" href="ext_scripts/bootstrap.css">
 	<link rel="stylesheet" href="style.css">	
@@ -64,7 +64,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <h2>You Win!</h2>
-        <a href="http://thecatapi.com"><img class="img-responsive center-block" src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>
+        <a href="http://thecatapi.com"><img class="img-responsive center-block" src="http://thecatapi.com/api/images/get?format=src&type=gif" alt="Imagine you are looking at the world's CUTEST and FUNNIEST cat picture"></a>
       </div>
      <!-- </div> -->
     </div> 
@@ -74,9 +74,9 @@
 <div id="loseModal" class="modal fade container-fluid">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-body">
+			<div class="modal-body" id="lose_modal_body">
 				<h2>You Lose! Sorry :(</h2>
-				<svg></svg>
+				<svg class="img-responsive center-block"></svg>
 			</div>
 			<div class="modal-footer">
 				<a id="reset" type="button" class="btn btn-default center-block" data-dismiss="modal">Try Again</a>
